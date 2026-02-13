@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Te lo compro | Tu Personal Shopper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Minimal Navbar -->
+        <nav class="navbar">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <a href="#" class="logo">
+                    <div class="logo-icon"><i data-lucide="shopping-bag" width="20" height="20"></i></div>
+                    Te lo compro
+                </a>
+                <div class="rate-badge">
+                    <i data-lucide="coins" width="14"></i>
+                    <span>L.<span id="exchange-rate-display">25.00</span></span>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <!-- Header Text -->
+            <header style="text-align: center; margin-bottom: 2rem;">
+                <h1 class="title-display">Hazlo Tuyo.</h1>
+                <p style="font-size: 1.1rem; color: #4b5563; max-width: 400px; margin: 0 auto;">
+                    Cotiza tus productos favoritos en segundos.
+                </p>
+            </header>
+
+            <div class="app-grid">
+                <!-- Calculator Input -->
+                <section class="glass-panel input-card">
+                    <span class="input-label">Nuevo Artículo</span>
+                    <div class="input-wrapper">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" id="product-price" placeholder="0.00" step="0.01" autocomplete="off">
+                        <button id="add-btn" class="btn-add">
+                            Agregar
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Dynamic Item List -->
+                <section id="items-list" class="items-list">
+                    <div class="empty-state" id="empty-state">
+                        <i data-lucide="shopping-cart" width="32" height="32"
+                            style="margin-bottom: 0.5rem; opacity: 0.5;"></i>
+                        <p style="font-size: 0.9rem;">Tu lista está vacía.</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Grand Summary (Fixed Bottom) -->
+    <div class="summary-container hidden" id="grand-summary-container">
+        <section class="summary-card">
+            <div class="summary-row">
+                <span>Total Productos (USD)</span>
+                <span id="grand-total-usd">$0.00</span>
+            </div>
+            <div class="final-row">
+                <span class="final-label">Total a Pagar</span>
+                <span id="grand-total-hnl" class="final-price">L. 0.00</span>
+            </div>
+            <span class="disclaimer">
+                *Precio por libra: L. 180.00 (mínimo L. 100.00) no incluido.
+            </span>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
