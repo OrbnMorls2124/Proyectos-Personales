@@ -15,14 +15,18 @@ function App() {
 
     useEffect(() => {
         const fetchRate = async () => {
+            const API_KEY = '83a08876f60f4cc9850ae8b714c093cb';
+            const URL = `https://openexchangerates.org/api/latest.json?app_id=${API_KEY}&symbols=HNL`;
+
             try {
-                const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+                const response = await fetch(URL);
                 const data = await response.json();
                 if (data && data.rates && data.rates.HNL) {
                     setExchangeRate(data.rates.HNL);
+                    console.log('Tasa oficial actualizada:', data.rates.HNL);
                 }
             } catch (error) {
-                console.warn('Error fetching exchange rate, using fallback (25.00):', error);
+                console.warn('Error con Open Exchange Rates, usando fallback:', error);
             }
         };
         fetchRate();
