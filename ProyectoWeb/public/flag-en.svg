@@ -1,10 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" fill="#fff"/>
-  <path d="M0 0h32v2.46H0zm0 4.92h32v2.46H0zm0 4.93h32v2.46H0zm0 4.92h32v2.46H0zm0 4.92h32v2.46H0zm0 4.93h32v2.46H0z" fill="#b22234"/>
-  <rect width="14" height="14" fill="#3c3b6e"/>
-  <circle cx="3" cy="3" r="1" fill="#fff"/>
-  <circle cx="7" cy="3" r="1" fill="#fff"/>
-  <circle cx="11" cy="3" r="1" fill="#fff"/>
-  <circle cx="5" cy="7" r="1" fill="#fff"/>
-  <circle cx="9" cy="7" r="1" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1235 650">
+  <rect width="1235" height="650" fill="#fff"/>
+  <path fill="#b22234" d="M0 0h1235v50H0zm0 100h1235v50H0zm0 100h1235v50H0zm0 100h1235v50H0zm0 100h1235v50H0zm0 100h1235v50H0zm0 100h1235v50H0z"/>
+  <rect width="494" height="350" fill="#3c3b6e"/>
+  <g fill="#fff">
+    <g id="s">
+      <g id="r">
+        <path id="st" d="M30 35l-9 22 18-14-18 0 18 14z"/>
+      </g>
+      <use href="#st" x="80"/>
+      <use href="#st" x="160"/>
+      <use href="#st" x="240"/>
+      <use href="#st" x="320"/>
+      <use href="#st" x="400"/>
+    </g>
+    <use href="#s" y="70" x="40"/>
+    <use href="#s" y="140"/>
+    <use href="#s" y="210" x="40"/>
+    <use href="#s" y="280"/>
+  </g>
 </svg>
