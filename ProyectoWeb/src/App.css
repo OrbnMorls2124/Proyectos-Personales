@@ -327,23 +327,24 @@ input[type="number"]:focus {
     right: -10px;
     width: 36px;
     height: 36px;
-    background: white;
-    color: #94a3b8;
-    border: none;
+    background: #ffffff;
+    color: #ff4d4f;
+    border: 1px solid #ff4d4f20;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(255, 77, 79, 0.15);
     z-index: 10;
 }
 
 .btn-remove-circle:hover {
-    background: #1e293b;
+    background: #ff4d4f;
     color: white;
     transform: scale(1.15) rotate(90deg);
+    box-shadow: 0 6px 20px rgba(255, 77, 79, 0.3);
 }
 
 /* Empty State */
