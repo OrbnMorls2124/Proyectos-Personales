@@ -141,15 +141,15 @@ function App() {
 
     return (
         <div className="container">
+            <button className="theme-switcher" onClick={toggleDarkMode}>
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
             <nav className="navbar">
                 <a href="#" className="logo">
                     <div className="logo-icon"><Package size={22} strokeWidth={3} /></div>
                     <span className="logo-text" style={{ fontSize: '1.4rem', fontWeight: 900 }}>{t.logoName}</span>
                 </a>
                 <div className="nav-actions">
-                    <button className="theme-switcher" onClick={toggleDarkMode}>
-                        {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-                    </button>
                     <div className="rate-badge">
                         <TrendingUp size={16} />
                         <span>{t.rateLabel} <strong>{exchangeRate.toFixed(2)}</strong></span>
