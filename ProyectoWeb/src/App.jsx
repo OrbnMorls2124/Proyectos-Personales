@@ -57,7 +57,7 @@ function App() {
 
     useEffect(() => {
         const fetchRate = async () => {
-            const API_KEY = '83a08876f60f4cc9850ae8b714c093cb';
+            const API_KEY = import.meta.env.VITE_EXCHANGE_RATE_API_KEY;
             const URL = `https://openexchangerates.org/api/latest.json?app_id=${API_KEY}&symbols=HNL`;
 
             try {
