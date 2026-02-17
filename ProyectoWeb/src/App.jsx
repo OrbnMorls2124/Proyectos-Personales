@@ -141,7 +141,7 @@ function App() {
                     </div>
                     <button className="lang-switcher" onClick={toggleLang}>
                         <img
-                            src={lang === 'es' ? '/flag-es.svg' : '/flag-en.svg'}
+                            src={lang === 'es' ? 'https://flagcdn.com/es.svg' : 'https://flagcdn.com/us.svg'}
                             alt={lang.toUpperCase()}
                             className="lang-flag-img"
                         />
