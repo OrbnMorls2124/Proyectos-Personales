@@ -140,7 +140,11 @@ function App() {
                         <span>{t.rateLabel} <strong>{exchangeRate.toFixed(2)}</strong></span>
                     </div>
                     <button className="lang-switcher" onClick={toggleLang}>
-                        <span className="lang-flag">{lang === 'es' ? '🇲🇽' : '🇺🇸'}</span>
+                        <img
+                            src={lang === 'es' ? '/flag-es.svg' : '/flag-en.svg'}
+                            alt={lang.toUpperCase()}
+                            className="lang-flag-img"
+                        />
                         {lang.toUpperCase()}
                     </button>
                 </div>
