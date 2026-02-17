@@ -13,10 +13,31 @@
 
     --text-main: #1e293b;
     --text-muted: #64748b;
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    --input-bg: #ffffff;
+    --ticket-bg: #ffffff;
+    --ticket-border: #f1f5f9;
 
     --card-bg: rgba(255, 255, 255, 0.85);
     --card-border: rgba(255, 255, 255, 0.6);
     --shadow-luxe: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode {
+    --bg-mesh:
+        radial-gradient(at 80% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+        radial-gradient(at 20% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%),
+        radial-gradient(at 0% 0%, rgba(15, 23, 42, 0.9) 0px, transparent 50%);
+
+    background-color: #0f172a;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --nav-bg: rgba(30, 41, 59, 0.8);
+    --input-bg: #1e293b;
+    --ticket-bg: #1e293b;
+    --ticket-border: #334155;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --card-border: rgba(255, 255, 255, 0.05);
 }
 
 * {
@@ -35,6 +56,7 @@ body {
     color: var(--text-main);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,

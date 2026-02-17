@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Plus, X, Package, TrendingUp, ShoppingBag, Coins } from 'lucide-react'
+import { Plus, X, Package, TrendingUp, ShoppingBag, Coins, Sun, Moon } from 'lucide-react'
 import './App.css'
 
 const translations = {
@@ -47,13 +47,13 @@ function App() {
     const [exchangeRate, setExchangeRate] = useState(25.00);
     const [isShaking, setIsShaking] = useState(false);
     const [lang, setLang] = useState('es');
+    const [darkMode, setDarkMode] = useState(false);
     const inputRef = useRef(null);
 
     const t = translations[lang];
 
-    // Constants (Exactly as approved in previous versions)
-    const TAX_RATE = 0.075;      // 7.5%
-    const COMMISSION_RATE = 0.25; // 25%
+    const TAX_RATE = 0.075;
+    const COMMISSION_RATE = 0.25;
 
     useEffect(() => {
         const fetchRate = async () => {
@@ -76,6 +76,18 @@ function App() {
 
     const toggleLang = () => {
         setLang(prev => prev === 'es' ? 'en' : 'es');
+    };
+
+    const toggleDarkMode = () => {
+        setDarkMode(prev => {
+            const newVal = !prev;
+            if (newVal) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+            return newVal;
+        });
     };
 
     const formatMoney = (amount, currency = 'USD') => {
@@ -135,6 +147,9 @@ function App() {
                     <span className="logo-text" style={{ fontSize: '1.4rem', fontWeight: 900 }}>{t.logoName}</span>
                 </a>
                 <div className="nav-actions">
+                    <button className="theme-switcher" onClick={toggleDarkMode}>
+                        {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+                    </button>
                     <div className="rate-badge">
                         <TrendingUp size={16} />
                         <span>{t.rateLabel} <strong>{exchangeRate.toFixed(2)}</strong></span>
@@ -212,7 +227,7 @@ function App() {
 
                                     <div className="ticket-footer">
                                         <div className="price-tag-usd">
-                                            {t.subtotal} <span style={{ color: '#1e293b', fontWeight: 700 }}>{formatMoney(item.totalUsd)}</span>
+                                            {t.subtotal} <span style={{ color: 'var(--text-main)', fontWeight: 700 }}>{formatMoney(item.totalUsd)}</span>
                                         </div>
                                         <div className="price-tag-hnl">
                                             {formatMoney(item.totalHnl, 'HNL')}
