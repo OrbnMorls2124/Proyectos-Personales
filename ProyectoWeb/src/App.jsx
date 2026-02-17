@@ -2,12 +2,54 @@ import { useState, useEffect, useRef } from 'react'
 import { Plus, X, Package, TrendingUp, ShoppingBag, Coins } from 'lucide-react'
 import './App.css'
 
+const translations = {
+    es: {
+        logoName: 'Te lo compro',
+        rateLabel: 'HNL',
+        title: 'Calcula tu Compra.',
+        subtitle: 'Cotiza tus productos de USA con precisión instantánea.',
+        priceLabel: 'Precio del Producto (USD)',
+        placeholder: '0.00',
+        btnAdd: 'Agregar',
+        emptyTitle: 'Tu lista está vacía',
+        emptySubtitle: 'Agrega un artículo para ver el desglose total.',
+        basePrice: 'Precio Base',
+        taxLabel: 'Tasa (7.5%)',
+        feeLabel: 'Imp (25%)',
+        subtotal: 'Subtotal',
+        totalAccumulated: 'Total Acumulado (USD)',
+        totalPayable: 'Total Neto a Pagar',
+        disclaimer: '*Tarifa por peso (libra) L.180.00 no incluida en el cálculo.',
+    },
+    en: {
+        logoName: 'Buy it for me',
+        rateLabel: 'HNL Rate',
+        title: 'Calculate your Purchase.',
+        subtitle: 'Quote your USA products with instant precision.',
+        priceLabel: 'Product Price (USD)',
+        placeholder: '0.00',
+        btnAdd: 'Add',
+        emptyTitle: 'Your list is empty',
+        emptySubtitle: 'Add an item to see the total breakdown.',
+        basePrice: 'Base Price',
+        taxLabel: 'Tax (7.5%)',
+        feeLabel: 'Fee (25%)',
+        subtotal: 'Subtotal',
+        totalAccumulated: 'Accumulated Total (USD)',
+        totalPayable: 'Net Total to Pay',
+        disclaimer: '*Weight fee (per pound) L.180.00 not included in the calculation.',
+    }
+};
+
 function App() {
     const [items, setItems] = useState([]);
     const [price, setPrice] = useState('');
     const [exchangeRate, setExchangeRate] = useState(25.00);
     const [isShaking, setIsShaking] = useState(false);
+    const [lang, setLang] = useState('es');
     const inputRef = useRef(null);
+
+    const t = translations[lang];
 
     // Constants (Exactly as approved in previous versions)
     const TAX_RATE = 0.075;      // 7.5%
@@ -32,7 +74,9 @@ function App() {
         fetchRate();
     }, []);
 
-
+    const toggleLang = () => {
+        setLang(prev => prev === 'es' ? 'en' : 'es');
+    };
 
     const formatMoney = (amount, currency = 'USD') => {
         if (currency === 'USD') {
@@ -88,22 +132,27 @@ function App() {
             <nav className="navbar">
                 <a href="#" className="logo">
                     <div className="logo-icon"><Package size={22} strokeWidth={3} /></div>
-                    <span className="logo-text" style={{ fontSize: '1.4rem', fontWeight: 900 }}>Te lo compro</span>
+                    <span className="logo-text" style={{ fontSize: '1.4rem', fontWeight: 900 }}>{t.logoName}</span>
                 </a>
-                <div className="rate-badge">
-                    <TrendingUp size={16} />
-                    <span>HNL <strong>{exchangeRate.toFixed(2)}</strong></span>
+                <div className="nav-actions">
+                    <div className="rate-badge">
+                        <TrendingUp size={16} />
+                        <span>{t.rateLabel} <strong>{exchangeRate.toFixed(2)}</strong></span>
+                    </div>
+                    <button className="lang-switcher" onClick={toggleLang}>
+                        {lang.toUpperCase()}
+                    </button>
                 </div>
             </nav>
 
             <main className="main-content">
                 <header className="main-header">
-                    <h1 className="title-display">Calcula tu Compra.</h1>
-                    <p className="subtitle">Cotiza tus productos de USA con precisión instantánea.</p>
+                    <h1 className="title-display">{t.title}</h1>
+                    <p className="subtitle">{t.subtitle}</p>
                 </header>
 
                 <section className="input-card animate-fade-in">
-                    <label htmlFor="product-price" className="input-label">Precio del Producto (USD)</label>
+                    <label htmlFor="product-price" className="input-label">{t.priceLabel}</label>
                     <div className="input-wrapper">
                         <div className="input-group">
                             <span className="currency-symbol">$</span>
@@ -111,7 +160,7 @@ function App() {
                                 ref={inputRef}
                                 type="number"
                                 id="product-price"
-                                placeholder="0.00"
+                                placeholder={t.placeholder}
                                 step="0.01"
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
@@ -122,7 +171,7 @@ function App() {
                         </div>
                         <button onClick={addItem} className="btn-add">
                             <Plus size={20} strokeWidth={3} />
-                            <span>Agregar</span>
+                            <span>{t.btnAdd}</span>
                         </button>
                     </div>
                 </section>
@@ -131,8 +180,8 @@ function App() {
                     {items.length === 0 ? (
                         <div className="empty-state animate-fade-in">
                             <ShoppingBag size={48} color="#cbd5e1" style={{ marginBottom: '1.5rem' }} />
-                            <h3 style={{ color: '#64748b', fontSize: '1.25rem' }}>Tu lista está vacía</h3>
-                            <p style={{ color: '#94a3b8' }}>Agrega un artículo para ver el desglose total.</p>
+                            <h3 style={{ color: '#64748b', fontSize: '1.25rem' }}>{t.emptyTitle}</h3>
+                            <p style={{ color: '#94a3b8' }}>{t.emptySubtitle}</p>
                         </div>
                     ) : (
                         items.map((item, index) => (
@@ -143,9 +192,9 @@ function App() {
 
                                 <div className="ticket-card">
                                     <div className="ticket-header">
-                                        <span>Precio Base</span>
-                                        <span>Tasa (7.5%)</span>
-                                        <span>Imp (25%)</span>
+                                        <span>{t.basePrice}</span>
+                                        <span>{t.taxLabel}</span>
+                                        <span>{t.feeLabel}</span>
                                     </div>
 
                                     <div className="ticket-body">
@@ -158,7 +207,7 @@ function App() {
 
                                     <div className="ticket-footer">
                                         <div className="price-tag-usd">
-                                            Subtotal <span style={{ color: '#1e293b', fontWeight: 700 }}>{formatMoney(item.totalUsd)}</span>
+                                            {t.subtotal} <span style={{ color: '#1e293b', fontWeight: 700 }}>{formatMoney(item.totalUsd)}</span>
                                         </div>
                                         <div className="price-tag-hnl">
                                             {formatMoney(item.totalHnl, 'HNL')}
@@ -176,22 +225,22 @@ function App() {
                     <section className="summary-card animate-fade-in">
                         <div className="summary-row">
                             <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <Coins size={14} /> Total Acumulado (USD)
+                                <Coins size={14} /> {t.totalAccumulated}
                             </span>
                             <strong>{formatMoney(totals.usd)}</strong>
                         </div>
                         <div className="final-row">
-                            <span className="final-label">Total Neto a Pagar</span>
+                            <span className="final-label">{t.totalPayable}</span>
                             <span className="final-price">{formatMoney(totals.hnl, 'HNL')}</span>
                         </div>
                         <span className="disclaimer">
-                            *Tarifa por peso (libra) L.180.00 no incluida en el cálculo.
+                            {t.disclaimer}
                         </span>
                     </section>
                 </div>
             )}
         </div>
-    )
+    );
 }
 
-export default App
+export default App;
