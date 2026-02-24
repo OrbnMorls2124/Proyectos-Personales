@@ -12,7 +12,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        // Sincronizar datos de fútbol cada minuto para partidos en vivo
+        $schedule->command('app:sync-football-data')->everyMinute();
     }
 
     /**
