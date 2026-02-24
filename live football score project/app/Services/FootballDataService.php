@@ -131,17 +131,21 @@ class FootballDataService
             return 0;
         }
 
-        $kickoff = Carbon::parse($match['utcDate']);
-        $now = now();
-        
-        // If it's paused (HT), it's usually 45
+        // If it's paused (HT), cap at 45
         if ($match['status'] === 'PAUSED') {
             return 45;
         }
 
-        $diffInMinutes = $kickoff->diffInMinutes($now);
+        $kickoff = Carbon::parse($match['utcDate']);
+        $now = now();
+        $diffInMinutes = (int) $kickoff->diffInMinutes($now);
 
-        // Cap at 90+ if it goes long, or allow it to show the real diff
-        return (int) max(0, $diffInMinutes);
+        // If more than 45 mins have passed from kickoff, we're in the second half.
+        // Subtract ~15 minutes for the halftime break to get the real game minute.
+        if ($diffInMinutes > 50) {
+            $diffInMinutes = max(46, $diffInMinutes - 15);
+        }
+
+        return $diffInMinutes;
     }
 }
