@@ -92,7 +92,10 @@ new class extends Component
                                         </span>
                                         
                                         <!-- Status or Live Minute -->
-                                        @if($isLive)
+                                        @if($fixture->status_short === 'HT')
+                                            <span class="text-xs text-yellow-400 font-bold mt-0.5">HT</span>
+                                            <span class="text-[9px] text-yellow-400/70 font-medium mt-0.5">Descanso</span>
+                                        @elseif($isLive)
                                             <span class="text-xs text-lime-400 font-bold mt-0.5" x-text="currentElapsed + '\''">
                                                 {{ $fixture->elapsed ?? 0 }}'
                                             </span>
@@ -107,7 +110,7 @@ new class extends Component
                                                 <img src="{{ $fixture->homeTeam->logo }}" alt="" class="w-8 h-8">
                                                 <span class="font-medium text-lg">{{ $fixture->homeTeam->name }}</span>
                                             </div>
-                                            <span class="text-2xl font-bold {{ $fixture->status_short === 'LIVE' ? 'text-lime-400' : 'text-white' }}">
+                                            <span class="text-2xl font-bold {{ $fixture->status_short === 'HT' ? 'text-yellow-400' : ($isLive ? 'text-lime-400' : 'text-white') }}">
                                                 {{ $fixture->home_score }}
                                             </span>
                                         </div>
@@ -116,7 +119,7 @@ new class extends Component
                                                 <img src="{{ $fixture->awayTeam->logo }}" alt="" class="w-8 h-8">
                                                 <span class="font-medium text-lg">{{ $fixture->awayTeam->name }}</span>
                                             </div>
-                                            <span class="text-2xl font-bold {{ $fixture->status_short === 'LIVE' ? 'text-lime-400' : 'text-white' }}">
+                                            <span class="text-2xl font-bold {{ $fixture->status_short === 'HT' ? 'text-yellow-400' : ($isLive ? 'text-lime-400' : 'text-white') }}">
                                                 {{ $fixture->away_score }}
                                             </span>
                                         </div>
