@@ -9,4 +9,4 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 // Sincronizar datos de fútbol cada 2 minutos para mantener partidos en vivo actualizados
-Schedule::command('app:sync-football-data')->everyTwoMinutes();
+Schedule::command('app:sync-football-data')->everyMinute();

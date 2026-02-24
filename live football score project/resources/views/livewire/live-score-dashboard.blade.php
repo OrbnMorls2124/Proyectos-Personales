@@ -19,7 +19,7 @@ new class extends Component
 };
 ?>
 
-<div class="py-12 bg-gray-900 min-h-screen text-white" wire:poll.10s>
+<div class="py-12 bg-gray-900 min-h-screen text-white" wire:poll.5s>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <header class="flex justify-between items-center mb-8 border-b border-gray-800 pb-4">
             <h1 class="text-3xl font-bold tracking-tight text-white flex items-center gap-2">
