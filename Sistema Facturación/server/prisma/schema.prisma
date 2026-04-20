@@ -1,0 +1,123 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// Enums restored for PostgreSQL
+enum Role {
+  ADMIN
+  CAJERO
+  CONTADOR
+}
+
+enum InvoiceStatus {
+  DRAFT
+  ISSUED
+  CANCELLED
+}
+
+// User Management
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      Role     @default(CAJERO)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Client Information (Clientes)
+model Client {
+  id        String    @id @default(uuid())
+  rtn       String?   @unique // Registro Tributario Nacional
+  name      String
+  address   String?
+  email     String?
+  phone     String?
+  invoices  Invoice[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// Product Catalog
+model Product {
+  id           String        @id @default(uuid())
+  code         String        @unique
+  name         String
+  description  String?
+  price        Decimal       @db.Decimal(10, 2)
+  taxRate      Decimal       @default(0.15) @db.Decimal(5, 2) // Default ISV 15%
+  isExonerated Boolean       @default(false)
+  stock        Int           @default(0)
+  items        InvoiceItem[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+// Fiscal Sequence Management (SAR compliance)
+model FiscalSequence {
+  id             String    @id @default(uuid())
+  cai            String    @unique // Código de Autorización de Emisión
+  branchCode     String // Establecimiento (e.g., "000")
+  emissionPoint  String // Punto de Emisión (e.g., "001")
+  docType        String // Tipo de Documento (e.g., "01" Factura)
+  startRange     String // e.g. "00000001"
+  endRange       String // e.g. "00010000"
+  currentNumber  Int       @default(0) // Tracks usage within range
+  expirationDate DateTime
+  isActive       Boolean   @default(true)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  invoices       Invoice[]
+}
+
+// Invoices (Facturas)
+model Invoice {
+  id              String         @id @default(uuid())
+  invoiceNumber   String         @unique // Full format: 000-000-01-00000000
+  cai             String? // Snapshot of CAI used
+  sequenceId      String?
+  sequence        FiscalSequence? @relation(fields: [sequenceId], references: [id])
+  
+  clientId        String
+  client          Client         @relation(fields: [clientId], references: [id])
+  
+  date            DateTime       @default(now())
+  dueDate         DateTime?
+  
+  subtotal        Decimal        @db.Decimal(12, 2)
+  taxAmount       Decimal        @db.Decimal(12, 2)
+  discount        Decimal        @default(0) @db.Decimal(12, 2)
+  total           Decimal        @db.Decimal(12, 2)
+  
+  status          InvoiceStatus  @default(DRAFT)
+  items           InvoiceItem[]
+  
+  notes           String?
+  
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
+
+// Invoice Items
+model InvoiceItem {
+  id        String  @id @default(uuid())
+  invoiceId String
+  invoice   Invoice @relation(fields: [invoiceId], references: [id])
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  
+  quantity  Int
+  unitPrice Decimal @db.Decimal(10, 2)
+  subtotal  Decimal @db.Decimal(12, 2)
+  tax       Decimal @db.Decimal(12, 2)
+  total     Decimal @db.Decimal(12, 2)
+}

@@ -1,0 +1,519 @@
+:root {
+    /* Enterprise Color Palette (Slate & Blue) */
+    --primary: #0f172a;
+    /* Slate 900 - Strong, Corporate */
+    --primary-hover: #1e293b;
+    /* Slate 800 */
+
+    --accent: #2563eb;
+    /* Royal Blue - Trustworthy */
+    --accent-light: #eff6ff;
+    /* Blue 50 */
+
+    --success: #059669;
+    /* Emerald 600 - Money/Success */
+    --danger: #dc2626;
+    /* Red 600 */
+
+    --bg-page: #f8fafc;
+    /* Slate 50 - Clean background */
+    --bg-card: #ffffff;
+
+    --text-main: #1e293b;
+    /* Slate 800 */
+    --text-muted: #64748b;
+    /* Slate 500 */
+    --text-light: #94a3b8;
+    /* Slate 400 */
+
+    --border-color: #e2e8f0;
+    /* Slate 200 */
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-up: 0 -4px 6px -1px rgb(0 0 0 / 0.1);
+
+    /* Fonts */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    padding-bottom: 240px;
+    /* Space for fixed footer */
+    line-height: 1.5;
+}
+
+/* Layout */
+.container {
+    max-width: 540px;
+    /* Focused, tool-like width */
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+/* Navbar / Header Area */
+.navbar {
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+.logo-icon {
+    background: var(--primary);
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    /* Slightly squared */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rate-badge {
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    /* Squarer radius */
+    font-weight: 600;
+    font-size: 0.8rem;
+    border: 1px solid #dbeafe;
+    /* Blue 100 */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Typography Overrides */
+.title-display {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* Forms & Inputs */
+.input-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+}
+
+.input-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.input-wrapper {
+    display: flex;
+    gap: 0.75rem;
+    position: relative;
+}
+
+/* Customizing the numeric input */
+.input-group {
+    position: relative;
+    flex-grow: 1;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 2.25rem;
+    /* Space for symbol */
+    font-size: 1.1rem;
+    font-family: var(--font-body);
+    /* Numbers look better in Inter/Roboto often */
+    font-weight: 500;
+    color: var(--text-main);
+    background: #f8fafc;
+    /* Slight contrast input bg */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+input[type="number"]:focus {
+    background: white;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    /* Focus ring */
+}
+
+/* Add Button */
+.btn-add {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-add:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-add:active {
+    transform: translateY(0);
+}
+
+/* Items List */
+.items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: var(--bg-card);
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    color: var(--text-light);
+}
+
+/* Item / Ticket Card */
+.ticket-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.25rem;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.ticket-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: #cbd5e1;
+}
+
+.ticket-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    text-align: right;
+}
+
+.ticket-header span:first-child {
+    text-align: left;
+}
+
+.ticket-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-align: right;
+}
+
+.ticket-body span:first-child {
+    text-align: left;
+}
+
+.ticket-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 1rem 0;
+}
+
+.ticket-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-tag-usd {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    background: #f1f5f9;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.price-tag-hnl {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--success);
+    /* Green for final price usually nicer */
+}
+
+/* Remove Button */
+.btn-remove-circle {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    color: var(--text-light);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.btn-remove-circle:hover {
+    color: var(--danger);
+    border-color: var(--danger);
+    transform: scale(1.1);
+}
+
+/* Floating Summary Footer */
+.summary-container {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 500px;
+    z-index: 50;
+    perspective: 1000px;
+}
+
+.summary-card {
+    background: var(--primary);
+    /* Dark footer */
+    color: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    /* Slate 400 */
+    margin-bottom: 0.5rem;
+}
+
+.summary-row span:last-child {
+    color: white;
+    font-weight: 500;
+}
+
+.final-row {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.final-label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    /* Slate 300 */
+}
+
+.final-price {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #2dd4bf;
+    /* Teal 400 - pops against dark bg */
+    line-height: 1;
+}
+
+.disclaimer {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.7rem;
+    color: #64748b;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Utility Classes */
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-sm {
+    font-size: 0.85rem !important;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-in {
+    animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.shake {
+    animation: shake 0.3s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .title-display {
+        font-size: 2rem;
+    }
+
+    .input-wrapper {
+        flex-direction: column;
+    }
+
+    .btn-add {
+        width: 100%;
+        padding: 0.875rem;
+    }
+
+    .ticket-header,
+    .ticket-body {
+        font-size: 0.8rem;
+    }
+}
