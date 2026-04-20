@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proyecto de Tienda</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/proyecto.css">
+</head>
+<body>   
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <button class="btn btn-outline-light mx-2" id="sortAZBtn">Ordenar A-Z</button>
+        </li>
+        <li class="nav-item">
+          <button class="btn btn-outline-light mx-2" id="sortByPriceBtn">Ordenar por Precio</button>
+        </li>
+        <li class="nav-item">
+          
+          <a href="checkout.html" class="btn btn-outline-light mx-2" id="checkoutBtn">Ir al Checkout <i class="fas fa-shopping-cart"></i> <span id="cartItemCount" class="badge bg-primary">0</span></a>
+        </li>
+      </ul>
+      <div class="form-check form-switch ms-3">
+        <input class="form-check-input" type="checkbox" id="darkModeSwitch">
+        <label class="form-check-label" for="darkModeSwitch">
+          <span class="sun-icon">☀️</span>
+          <span class="moon-icon">🌙</span>
+          <span class="mode-text" id="modtext">Modo</span> 
+        </label>
+      </div>
+      <form class="d-flex ms-auto me-3" id="searchForm">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="searchInput">
+        <button class="btn btn-outline-light" type="submit">Buscar</button>
+      </form>
+      
+    </div>
+  </nav>
+  
+  <div class="container mt-4 " >
+    <div class="row" id="productsContainer">
+    </div>
+  </div>
+
+  
+  <footer class=" text-dark mt-5 py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h5>Atención al Cliente</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Ayuda y contactos</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+            <li><a href="#">Pedidos y envíos</a></li>
+            <li><a href="#">Devoluciones y reembolsos</a></li>
+            <li><a href="#">Pagos y precios</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Acerca de Tienda USAP</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Acerca de nosotros</a></li>
+            <li><a href="#">Inversores</a></li>
+            <li><a href="#">Partners de TIENDA USAP</a></li>
+            <li><a href="#">Trabaja con nosotros</a></li>
+            <li><a href="#">App de TIENDA USAP</a></li>
+            <li><a href="#">Declaración sobre la Esclavitud Moderna</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Descuentos para miembros</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Programa de afiliados</a></li>
+            <li><a href="#">Invita a un amigo</a></li>
+            <li><a href="#">Miembros de TIENDA USAP</a></li>
+            <li><a href="#">Descuento para estudiantes UNiDAYS</a></li>
+            <li><a href="#">Student Beans y graduados</a></li>
+            <li><a href="#">Descuento para estudiantes y jóvenes</a></li>
+            <li><a href="#">Descuento para estudiantes</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>Servicios conscious de TIENDA USAP</h5>
+          <ul class="list-unstyled">
+            <li>Second Life: vende tus bolsos de diseñador</li>
+          </ul>
+          <h5>Síguenos</h5>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-snapchat"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/admin.js"></script>
+  
+</body>
+</html>

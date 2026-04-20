@@ -1,0 +1,126 @@
+@media (min-width: 375px) {
+  .navbar-nav .nav-item {
+    padding-top: 10px;
+    
+  }
+  .form-check.form-switch {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; 
+}
+
+body {
+background-color: #f8f9fa;
+color: #333;
+}
+
+body.dark-mode {
+background-color: #343a40;
+color: #fff;
+}
+
+body.dark-mode .moon-icon {
+display: inline;
+}
+
+body:not(.dark-mode) .sun-icon {
+display: inline;
+}
+
+.sun-icon,
+.moon-icon {
+display: none;
+}
+.mode-text{
+color: white;
+}
+
+body.dark-mode .card {
+background-color: black;
+border: 1px solid #666;
+color: white;
+}
+body.dark-mode footer {
+background-color: black;
+color: white
+}
+
+.container{
+box-shadow: 2px 2px 40px !important;
+}
+body.dark-mode .card:hover{
+cursor: pointer;
+border-left: solid 5px white;
+border-right: solid 5px white;
+font-weight: bold;
+box-shadow: 2px 2px 20px white; 
+
+}
+body:not(.dark-mode) .card:hover {
+cursor: pointer;
+border-left: solid 5px white;
+border-right: solid 5px white;
+font-weight: bold;
+box-shadow: 2px 2px 20px black; 
+}
+
+footer {
+background-color: #f8f9fa;
+padding: 40px 0;
+}
+
+footer h5 {
+color: #333;
+margin-bottom: 20px;
+}
+
+footer ul {
+list-style: none;
+padding: 0;
+}
+
+footer ul li {
+margin-bottom: 10px;
+}
+
+footer ul li a {
+text-decoration: none;
+color: #555;
+}
+
+footer ul li a:hover {
+color: #007bff;
+}
+
+.social-icons a {
+color: #555;
+margin-right: 10px;
+}
+
+.social-icons a:hover {
+color: #007bff;
+}
+
+body.dark-mode footer h5 {
+  color: white;
+}
+
+body.dark-mode footer a{
+  color: white;
+}
+
+body.dark-mode footer li{
+  color: white;
+}
+
+#productsContainer{
+  margin-top: 10%;
+  padding-top: 2%;
+}
