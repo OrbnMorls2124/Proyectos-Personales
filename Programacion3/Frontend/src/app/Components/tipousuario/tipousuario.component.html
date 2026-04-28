@@ -1,0 +1,63 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE TIPO DE USUARIO</a>
+</nav>
+
+<div class="row mt-5">
+  <div class="card">
+    <div class="card-body">
+      <div *ngIf="editMode" style="margin-bottom: 12px;">
+        <button type="button" class="btn btn-secondary" [routerLink]="['/tipousuario']">Volver</button>
+      </div>
+      <form #f="ngForm" (ngSubmit)="Guardar()" novalidate>
+        <div class="form-group" hidden>
+          <input type="text" readonly [(ngModel)]="item.idtpusuario" name="idtpusuario" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Descripción</label>
+          <input type="text" [(ngModel)]="item.descripcion" name="descripcion" placeholder="DIGITE LA DESCRIPCIÓN" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Estado</label>
+          <select [(ngModel)]="item.estado" name="estado" class="form-control">
+            <option>Activo</option>
+            <option>Inactivo</option>
+          </select>
+        </div>
+        <br>
+        <button type="submit" class="btn" [ngClass]="editMode ? 'btn-update' : 'btn-primary'">{{ editMode ? 'Actualizar' : 'Agregar' }}</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br *ngIf="!editMode">
+<div class="container" *ngIf="!editMode">
+  <div class="row mt-25">
+    <div>
+      <div class="search-toolbar">
+        <label for="buscar-tipousuario">Buscador</label>
+        <input id="buscar-tipousuario" type="text" [(ngModel)]="searchTerm" (ngModelChange)="filterData()" placeholder="Buscar tipos de usuario..." class="form-control">
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>DESCRIPCIÓN</th>
+            <th>ESTADO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of filteredTData">
+            <td>{{ row.idtpusuario }}</td>
+            <td>{{ row.descripcion }}</td>
+            <td>{{ row.estado }}</td>
+            <td>
+              <button class="btn btn-update" [routerLink]="['/tipousuario/edit', row.idtpusuario]">Actualizar</button>
+              <button class="btn btn-danger btn-sm" (click)="Eliminar(row.idtpusuario)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

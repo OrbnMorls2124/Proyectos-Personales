@@ -1,0 +1,146 @@
+[
+  {
+    "table": "areas_trabajo",
+    "cols": [
+      "idarea (int)",
+      "idempresa (int)",
+      "idsuc (int)",
+      "area (varchar(50))",
+      "fecha_creacion (date)",
+      "estado (varchar(10))"
+    ]
+  },
+  {
+    "table": "clientes",
+    "cols": [
+      "num_clie (int)",
+      "idempresa (int)",
+      "idsuc (int)",
+      "identidad (varchar(20))",
+      "rtn (varchar(20))",
+      "fecha_nac (date)",
+      "nombre (varchar(50))",
+      "telefono (varchar(15))",
+      "direccion (varchar(500))",
+      "correo (varchar(50))",
+      "fecha_creacion (date)",
+      "estado (varchar(10))"
+    ]
+  },
+  {
+    "table": "empleados",
+    "cols": [
+      "idemp (int)",
+      "idempresa (int)",
+      "idsuc (int)",
+      "idarea (int)",
+      "identidad (varchar(20))",
+      "fecha_nac (date)",
+      "nombres (varchar(50))",
+      "apellidos (varchar(50))",
+      "genero (varchar(20))",
+      "estado_civil (varchar(50))",
+      "direccion (varchar(900))",
+      "fecha_creacion (date)",
+      "estado (varchar(10))"
+    ]
+  },
+  {
+    "table": "empresa",
+    "cols": [
+      "idempresa (int)",
+      "nombre (varchar(50))",
+      "direccion (varchar(900))",
+      "rtn (varchar(20))",
+      "telefono (varchar(15))",
+      "correo (varchar(50))",
+      "contacto (varchar(50))",
+      "fecha_creacion (date)",
+      "estado (varchar(10))"
+    ]
+  },
+  {
+    "table": "formapago",
+    "cols": [
+      "idfpago (int)",
+      "idempresa (int)",
+      "formapago (varchar(50))",
+      "estado (varchar(10))"
+    ]
+  },
+  {
+    "table": "producto",
+    "cols": [
+      "num_prod (int)",
+      "idempresa (int)",
+      "idsuc (int)",
+      "idtpprod (int)",
+      "descripcion (varchar(50))",
+      "presentacion (varchar(50))",
+      "marca (varchar(50))",
+      "valor (decimal(10,2))",
+      "precioventa (decimal(10,2))",
+      "existencia (decimal(10,0))",
+      "fecha_ingreso (date)",
+      "fecha_actualiza (date)",
+      "estado (varchar(10))"
+    ]
+  },
+  {
+    "table": "proveedor",
+    "cols": [
+      "idprov (int)",
+      "idempresa (int)",
+      "proveedor (varchar(100))",
+      "direccion (varchar(900))",
+      "telefono (varchar(15))",
+      "responsable (varchar(50))",
+      "fecha_creacion (date)",
+      "observaciones (varchar(900))",
+      "estado (varchar(10))"
+    ]
+  },
+  {
+    "table": "sucursales",
+    "cols": [
+      "idsuc (int)",
+      "idempresa (int)",
+      "sucursal (varchar(50))",
+      "dirsuc (varchar(500))",
+      "telefono (varchar(15))",
+      "estado (varchar(10))"
+    ]
+  },
+  {
+    "table": "tipoproducto",
+    "cols": [
+      "idtpprod (int)",
+      "idempresa (int)",
+      "tipo (varchar(50))",
+      "estado (varchar(10))"
+    ]
+  },
+  {
+    "table": "tipousuario",
+    "cols": [
+      "idtpusuario (int)",
+      "idempresa (int)",
+      "tipo (varchar(50))",
+      "estado (varchar(10))"
+    ]
+  },
+  {
+    "table": "usuario",
+    "cols": [
+      "userid (int)",
+      "idempresa (int)",
+      "idsuc (int)",
+      "idtpusuario (int)",
+      "idemp (int)",
+      "usuario (varchar(100))",
+      "clave (varchar(100))",
+      "tipo (varchar(50))",
+      "estado (varchar(10))"
+    ]
+  }
+]

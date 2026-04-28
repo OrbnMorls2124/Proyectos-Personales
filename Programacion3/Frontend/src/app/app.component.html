@@ -1,0 +1,31 @@
+<div class="container app-shell">
+  <nav class="main-menu" aria-label="Menu principal">
+    <a class="main-menu__brand" routerLink="/">Sistema</a>
+    <div class="main-menu__links" *ngIf="Auth.isLoggedIn()">
+      <a routerLink="/areastrabajo" routerLinkActive="active">Areas Trabajo</a>
+      <a routerLink="/clientes" routerLinkActive="active">Clientes</a>
+      <a routerLink="/empleados" routerLinkActive="active">Empleados</a>
+      <a routerLink="/empresa" routerLinkActive="active">Empresa</a>
+      <a routerLink="/formapago" routerLinkActive="active">Formapago</a>
+      <a routerLink="/producto" routerLinkActive="active">Producto</a>
+      <a routerLink="/proveedor" routerLinkActive="active">Proveedor</a>
+      <a routerLink="/sucursales" routerLinkActive="active">Sucursales</a>
+      <a routerLink="/tipoproducto" routerLinkActive="active">Tipoproducto</a>
+      <a routerLink="/tipousuario" routerLinkActive="active">Tipousuario</a>
+      <a routerLink="/usuario" routerLinkActive="active">Usuario</a>
+    </div>
+
+    <div class="main-menu__actions">
+      <label class="menu-switch" title="Cambiar tema">
+        <input type="checkbox" [checked]="darkMode" (change)="toggleTheme()" class="switch-input" />
+        <span class="switch-slider"></span>
+      </label>
+
+      <span class="menu-meta" *ngIf="Auth.isLoggedIn()">{{ Auth.user?.usuario }}</span>
+      <button class="btn btn-danger" *ngIf="Auth.isLoggedIn()" type="button" (click)="salir()">Salir</button>
+      <a class="menu-meta" *ngIf="!Auth.isLoggedIn()" routerLink="/login">Login</a>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

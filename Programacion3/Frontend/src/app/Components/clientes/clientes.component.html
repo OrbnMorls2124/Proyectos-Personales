@@ -1,0 +1,81 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE CLIENTES</a>
+</nav>
+
+<div class="row mt-5">
+  <div class="card">
+    <div class="card-body">
+      <div *ngIf="editMode" style="margin-bottom: 12px;">
+        <button type="button" class="btn btn-secondary" [routerLink]="['/clientes']">Volver</button>
+      </div>
+      <form #f="ngForm" (ngSubmit)="Guardar()" novalidate>
+        <div class="form-group" hidden>
+          <input type="text" readonly [(ngModel)]="item.num_clie" name="num_clie" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Nombre</label>
+          <input type="text" [(ngModel)]="item.nombre" name="nombre" placeholder="DIGITE EL NOMBRE" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Dirección</label>
+          <input type="text" [(ngModel)]="item.direccion" name="direccion" placeholder="DIGITE LA DIRECCIÓN" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Teléfono</label>
+          <input type="text" [(ngModel)]="item.telefono" name="telefono" placeholder="DIGITE EL TELÉFONO" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Correo</label>
+          <input type="text" [(ngModel)]="item.correo" name="correo" placeholder="DIGITE EL CORREO" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Estado</label>
+          <select [(ngModel)]="item.estado" name="estado" class="form-control">
+            <option>Activo</option>
+            <option>Inactivo</option>
+          </select>
+        </div>
+        <br>
+        <button type="submit" class="btn" [ngClass]="editMode ? 'btn-update' : 'btn-primary'">{{ editMode ? 'Actualizar' : 'Agregar' }}</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br *ngIf="!editMode">
+<div class="container" *ngIf="!editMode">
+  <div class="row mt-25">
+    <div>
+      <div class="search-toolbar">
+        <label for="buscar-clientes">Buscador</label>
+        <input id="buscar-clientes" type="text" [(ngModel)]="searchTerm" (ngModelChange)="filterData()" placeholder="Buscar clientes..." class="form-control">
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>NOMBRE</th>
+            <th>DIRECCIÓN</th>
+            <th>TELÉFONO</th>
+            <th>CORREO</th>
+            <th>ESTADO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of filteredTData">
+            <td>{{ row.num_clie }}</td>
+            <td>{{ row.nombre }}</td>
+            <td>{{ row.direccion }}</td>
+            <td>{{ row.telefono }}</td>
+            <td>{{ row.correo }}</td>
+            <td>{{ row.estado }}</td>
+            <td>
+              <button class="btn btn-update" [routerLink]="['/clientes/edit', row.num_clie]">Actualizar</button>
+              <button class="btn btn-danger btn-sm" (click)="Eliminar(row.num_clie)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

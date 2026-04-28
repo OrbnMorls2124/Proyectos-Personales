@@ -1,0 +1,85 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE USUARIOS</a>
+</nav>
+
+<div class="row mt-5">
+  <div class="card">
+    <div class="card-body">
+      <div *ngIf="editMode" style="margin-bottom: 12px;">
+        <button type="button" class="btn btn-secondary" [routerLink]="['/usuario']">Volver</button>
+      </div>
+      <form #f="ngForm" (ngSubmit)="Guardar()" novalidate>
+        <div class="form-group" hidden>
+          <input type="text" readonly [(ngModel)]="item.userid" name="userid" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Tipo de Usuario</label>
+          <select [(ngModel)]="item.idtpusuario" name="idtpusuario" class="form-control" required>
+            <option value="">Seleccione tipo</option>
+            <option *ngFor="let tipo of tiposUsuario" [value]="tipo.idtpusuario">{{tipo.tipo}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Empleado</label>
+          <select [(ngModel)]="item.idemp" name="idemp" class="form-control" required>
+            <option value="">Seleccione empleado</option>
+            <option *ngFor="let emp of empleados" [value]="emp.idemp">{{emp.nombres}} {{emp.apellidos}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="control-label">Usuario</label>
+          <input type="text" [(ngModel)]="item.usuario" name="usuario" placeholder="DIGITE EL USUARIO" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Contraseña</label>
+          <input type="password" [(ngModel)]="item.contrasena" name="contrasena" placeholder="DIGITE LA CONTRASEÑA" class="form-control">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Estado</label>
+          <select [(ngModel)]="item.estado" name="estado" class="form-control">
+            <option>Activo</option>
+            <option>Inactivo</option>
+          </select>
+        </div>
+        <br>
+        <button type="submit" class="btn" [ngClass]="editMode ? 'btn-update' : 'btn-primary'">{{ editMode ? 'Actualizar' : 'Agregar' }}</button>
+      </form>
+    </div>
+  </div>
+</div>
+<br *ngIf="!editMode">
+<div class="container" *ngIf="!editMode">
+  <div class="row mt-25">
+    <div>
+      <div class="search-toolbar">
+        <label for="buscar-usuario">Buscador</label>
+        <input id="buscar-usuario" type="text" [(ngModel)]="searchTerm" (ngModelChange)="filterData()" placeholder="Buscar usuarios..." class="form-control">
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>TIPO USUARIO</th>
+            <th>EMPLEADO</th>
+            <th>USUARIO</th>
+            <th>ESTADO</th>
+            <th>ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of filteredTData">
+            <td>{{ row.userid }}</td>
+            <td>{{ row.tipo_usuario }}</td>
+            <td>{{ row.nombre_empleado }} {{ row.apellido_empleado }}</td>
+            <td>{{ row.usuario }}</td>
+            <td>{{ row.estado }}</td>
+            <td>
+              <button class="btn btn-update" [routerLink]="['/usuario/edit', row.userid]">Actualizar</button>
+              <button class="btn btn-danger btn-sm" (click)="Eliminar(row.userid)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

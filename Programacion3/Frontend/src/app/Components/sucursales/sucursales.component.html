@@ -1,0 +1,92 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE SUCURSALES</a>
+
+</nav>
+
+<div class="agregar_contenedor"></div>
+<div class="row mt-5">
+<div class="card">
+    <div class="card-body">
+        <div *ngIf="editMode" style="margin-bottom: 12px;">
+          <button type="button" class="btn btn-secondary" [routerLink]="['/sucursales']">Volver</button>
+        </div>
+        <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="Guardar()" novalidate >
+          <div class="form-group">
+            <label for="" class="control-label" hidden>Sucursal No.</label>
+                  <input type="text"  readonly="readonly"  [(ngModel)]="user.idsuc" name="idsuc" placeholder="No" class="form-control" required hidden>
+                  </div>
+
+              <div class="form-group">
+                  <label for="" class="control-label">Empresa</label>
+                  <select [(ngModel)]="user.idempresa" name="idempresa" class="form-control" required>
+                    <option value="">Seleccione una empresa</option>
+                    <option *ngFor="let emp of empresas" [value]="emp.idempresa">{{emp.nombre}}</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <label for="" class="control-label">Sucursal</label>
+                  <input type="text"  [(ngModel)]="user.sucursal"  name="sucursal" placeholder="DIGITE LA SUCURSAL"  class="form-control" autofocus>
+                  <div ng-show="!user.sucursal && formulario.$submitted" class="alert alert-warning">Digite la SUCURSAL</div>
+
+              </div>
+              <div class="form-group">
+                <label for="" class="control-label">Direccion</label>
+                <input type="text"  [(ngModel)]="user.dirsuc"  name="dirsuc" placeholder="DIGITE LA DIRECCION"  class="form-control" autofocus>
+
+              </div>
+              <div class="form-group">
+                <label for="" class="control-label">Telefono</label>
+                <input type="text"  [(ngModel)]="user.telefono"  name="telefono" placeholder="DIGITE EL TELEFONO"  class="form-control" autofocus>
+            </div>
+
+
+
+          <button type="submit" class="btn" [ngClass]="editMode ? 'btn-update' : 'btn-primary'" formnovalidate value="Save">
+              {{ editMode ? 'Actualizar' : 'Agregar' }}
+          </button>
+        </form>
+    </div>
+</div>
+</div>
+<br *ngIf="!editMode">
+<div class="container" *ngIf="!editMode">
+<div class="row mt-25">
+    <div>
+      <div class="search-toolbar">
+        <label for="buscar-sucursales">Buscador</label>
+        <input id="buscar-sucursales" type="text" [(ngModel)]="searchTerm" (ngModelChange)="filterData()" placeholder="Buscar sucursales..." class="form-control">
+      </div>
+
+<table>
+  <thead>
+    <tr>
+        <th>NO</th>
+        <th>EMPRESA</th>
+        <th>SUCURSAL</th>
+        <th>DIRECCION</th>
+        <th>TELEFONO</th>
+        <th>ESTADO</th>
+        <th>ACCIONES</th>
+
+    </tr>
+
+  </thead>
+<tbody >
+
+            <tr *ngFor="let User of filteredTUser">
+                <td >{{User.idsuc}}</td>
+                <td >{{User.empresa}}</td>
+                <td >{{User.sucursal}}</td>
+                <td >{{User.dirsuc}}</td>
+                <td >{{User.telefono}}</td>
+                <td >{{User.estado}}</td>
+                <td>
+                  <button class="btn btn-danger" (click)="EliminarData(User.idsuc)">Eliminar</button>
+                  <button class="btn btn-update" [routerLink]="['/sucursales/edit', User.idsuc]">Actualizar</button>
+                </td>
+              </tr>
+ </tbody>
+</table>
+</div>
+</div>
+</div>

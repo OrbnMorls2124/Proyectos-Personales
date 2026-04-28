@@ -1,0 +1,102 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a href="/" class="navbar-brand">REGISTRO DE EMPRESA</a>
+
+</nav>
+
+<div class="agregar_contenedor"></div>
+<div class="row mt-5">
+<div class="card">
+    <div class="card-body">
+        <div *ngIf="editMode" style="margin-bottom: 12px;">
+          <button type="button" class="btn btn-secondary" [routerLink]="['/empresa']">Volver</button>
+        </div>
+        <form id="formulario" name="formulario" #f="ngForm" (ngSubmit)="Guardar()" novalidate >
+          <div class="form-group">
+            <label for="" class="control-label" hidden>Registro No.</label>
+                  <input type="text"  readonly="readonly"  [(ngModel)]="user.idempresa" name="idempresa" placeholder="No" class="form-control" required hidden>
+                  </div>
+
+              <div class="form-group">
+                  <label for="" class="control-label">Empresa</label>
+                  <input type="text"  [(ngModel)]="user.nombre"  name="nombre" placeholder="DIGITE LA EMPRESA"  class="form-control" autofocus>
+                  <div ng-show="!user.nombre && formulario.$submitted" class="alert alert-warning">Digite la Empresa</div>
+
+              </div>
+              <div class="form-group">
+                <label for="" class="control-label">Direccion</label>
+                <input type="text"  [(ngModel)]="user.direccion"  name="direccion" placeholder="DIGITE LA DIRECCION"  class="form-control" autofocus>
+
+              </div>
+              <div class="form-group">
+                <label for="" class="control-label">Telefono</label>
+                <input type="text"  [(ngModel)]="user.telefono"  name="telefono" placeholder="DIGITE EL TELEFONO"  class="form-control" autofocus>
+            </div>
+
+                <div class="form-group">
+                  <label for="" class="control-label">Correo</label>
+                  <input type="text"  [(ngModel)]="user.correo"  name="correo" placeholder="DIGITE EL CORREO"  class="form-control" autofocus>
+              </div>
+                <div class="form-group">
+            <label for="" class="control-label">Contacto</label>
+            <input type="text"  [(ngModel)]="user.contacto"  name="contacto" placeholder="DIGITE EL CONTACTO"  class="form-control" autofocus>
+           </div>
+            <div class="form-group">
+              <label for="" class="control-label">Fecha Creacion</label>
+              <input type="date"  [(ngModel)]="user.fecha_creacion"  name="fecha_creacion" placeholder="Seleccione la Fecha" class="form-control">
+
+          </div>
+          <button type="submit" class="btn" [ngClass]="editMode ? 'btn-update' : 'btn-primary'" formnovalidate value="Save">
+              {{ editMode ? 'Actualizar' : 'Agregar' }}
+          </button>
+        </form>
+    </div>
+</div>
+</div>
+<br *ngIf="!editMode">
+<div class="container" *ngIf="!editMode">
+<div class="row mt-25">
+    <div>
+      <div class="search-toolbar">
+        <label for="buscar-empresa">Buscador</label>
+        <input id="buscar-empresa" type="text" [(ngModel)]="searchTerm" (ngModelChange)="filterData()" placeholder="Buscar empresas..." class="form-control">
+      </div>
+<table>
+  <thead>
+    <tr>
+        <th>NO</th>
+        <th>EMPRESA</th>
+        <th>DIRECCION</th>
+        <th>RTN</th>
+        <th>TELEFONO</th>
+        <th>CORREO</th>
+        <th>CONTACTO</th>
+        <th>FECHA CREACION</th>
+        <th>ESTADO</th>
+        <th>ACCIONES</th>
+
+    </tr>
+
+  </thead>
+<tbody >
+
+            <tr *ngFor="let User of filteredTUser">
+                <td >{{User.idempresa}}</td>
+                <td >{{User.nombre}}</td>
+                <td >{{User.direccion}}</td>
+                <td >{{User.rtn}}</td>
+                <td >{{User.telefono}}</td>
+                <td >{{User.correo}}</td>
+                <td >{{User.contacto}}</td>
+                <td >{{User.fecha_creacion | date:'dd/MM/yyyy'}}</td>
+                <td >{{User.estado}}</td>
+                <td>
+                  <button class="btn btn-danger" (click)="EliminarData(User.idempresa)">Eliminar</button>
+                  <button class="btn btn-update" [routerLink]="['/empresa/edit', User.idempresa]">Actualizar</button>
+                </td>
+              </tr>
+ </tbody>
+</table>
+</div>
+</div>
+</div>
+
