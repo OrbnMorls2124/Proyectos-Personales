@@ -1,27 +1,45 @@
 # Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
+Este proyecto fue generado con Angular CLI version 17.2.2.
 
-## Development server
+## Servidor de desarrollo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Ejecuta `npm start` o `ng serve` para levantar el servidor de desarrollo.
 
-## Code scaffolding
+Luego abre:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+`http://localhost:4200/`
 
-## Build
+La aplicacion se recargara automaticamente cuando hagas cambios en los archivos fuente.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Generar codigo
 
-## Running unit tests
+Puedes usar Angular CLI para crear componentes, servicios, guards u otros elementos.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ejemplo:
 
-## Running end-to-end tests
+`ng generate component nombre-componente`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Tambien puedes usar:
 
-## Further help
+`ng generate directive|pipe|service|class|guard|interface|enum|module`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Compilar
+
+Ejecuta `npm run build` o `ng build` para compilar el proyecto.
+
+Los archivos generados quedaran en la carpeta `dist/`.
+
+## Pruebas unitarias
+
+Ejecuta `ng test` para correr las pruebas unitarias con Karma.
+
+## Ayuda adicional
+
+Para ver mas comandos de Angular CLI, ejecuta:
+
+`ng help`
+
+Tambien puedes consultar la documentacion oficial de Angular CLI:
+
+`https://angular.io/cli`
