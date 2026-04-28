@@ -3,11 +3,7 @@ const jwt = require('jsonwebtoken');
 function getJwtSecret() {
   const secret = process.env.JWT_SECRET;
   if (!secret || secret.length < 32) {
-    // En dev permitimos arrancar; en prod exige una clave fuerte.
-    if (process.env.NODE_ENV === 'production') {
-      throw new Error('JWT_SECRET es requerido y debe tener al menos 32 caracteres.');
-    }
-    return 'dev-only-insecure-secret-change-me-please-32chars';
+    throw new Error('JWT_SECRET es requerido y debe tener al menos 32 caracteres.');
   }
   return secret;
 }
