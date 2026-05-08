@@ -1,0 +1,28 @@
+openapi: 3.0.3
+info:
+  title: Nova Commerce REST API
+  version: 1.0.0
+paths:
+  /api/products:
+    get:
+      summary: Lista productos filtrables
+      parameters:
+        - in: query
+          name: q
+          schema: { type: string }
+        - in: query
+          name: category
+          schema: { type: string }
+      responses:
+        "200":
+          description: Productos disponibles
+  /api/search/predict:
+    get:
+      summary: Sugerencias predictivas
+      parameters:
+        - in: query
+          name: q
+          schema: { type: string }
+      responses:
+        "200":
+          description: Lista de sugerencias

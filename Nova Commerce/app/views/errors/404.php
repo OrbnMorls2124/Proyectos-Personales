@@ -1,0 +1,1 @@
+<section class="confirmation"><h1>No encontramos esta página</h1><p>Puede que el enlace haya cambiado o el producto ya no esté disponible.</p><a class="btn primary" href="/products">Volver al catálogo</a></section>

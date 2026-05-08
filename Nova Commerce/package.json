@@ -1,0 +1,22 @@
+{
+  "name": "nova-commerce",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@vitejs/plugin-legacy": "^6.0.0",
+    "axios": "^1.7.9",
+    "chart.js": "^4.4.7",
+    "datatables.net-dt": "^2.1.8",
+    "sweetalert2": "^11.15.3"
+  },
+  "devDependencies": {
+    "vite": "^6.0.7",
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49"
+  }
+}
